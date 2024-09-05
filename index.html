@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tima's AI-Bot</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism-themes/1.9.0/prism-darcula.min.css" rel="stylesheet" />
+  <style>
+    :root {
+      --background: 0 0% 100%;
+      --foreground: 240 10% 3.9%;
+      --card: 0 0% 100%;
+      --card-foreground: 240 10% 3.9%;
+      --popover: 0 0% 100%;
+      --popover-foreground: 240 10% 3.9%;
+      --primary: 240 5.9% 10%;
+      --primary-foreground: 0 0% 98%;
+      --secondary: 240 4.8% 95.9%;
+      --secondary-foreground: 240 5.9% 10%;
+      --muted: 240 4.8% 95.9%;
+      --muted-foreground: 240 3.8% 45%;
+      --accent: 240 4.8% 95.9%;
+      --accent-foreground: 240 5.9% 10%;
+      --destructive: 0 72% 51%;
+      --destructive-foreground: 0 0% 98%;
+      --border: 240 5.9% 90%;
+      --input: 240 5.9% 90%;
+      --ring: 240 5.9% 10%;
+      --chart-1: 173 58% 39%;
+      --chart-2: 12 76% 61%;
+      --chart-3: 197 37% 24%;
+      --chart-4: 43 74% 66%;
+      --chart-5: 27 87% 67%;
+      --radius: 0.5rem;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+</head>
+
+<body class="flex flex-col items-center justify-center min-h-screen bg-[#282a36] text-[#f8f8f2] px-4 md:px-20">
+  <header class="w-full max-w-3xl py-8 flex items-center justify-between">
+    <a class="flex items-center gap-2" href="#">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+        class="w-6 h-6 text-[#bd93f9]">
+        <path d="M12 8V4H8"></path>
+        <rect width="16" height="12" x="4" y="8" rx="2"></rect>
+        <path d="M2 14h2"></path>
+        <path d="M20 14h2"></path>
+        <path d="M15 13v2"></path>
+        <path d="M9 13v2"></path>
+      </svg>
+      <span class="text-xl font-semibold">Tima's AI-Bot</span>
+    </a>
+    <nav class="flex items-center gap-4">
+      <a class="text-sm hover:text-[#ff79c6] transition-colors" href="#">Home</a>
+      <a class="text-sm hover:text-[#ff79c6] transition-colors" href="#">Features</a>
+      <a class="text-sm hover:text-[#ff79c6] transition-colors" href="#">Pricing</a>
+      <a class="text-sm hover:text-[#ff79c6] transition-colors" href="#">Contact</a>
+    </nav>
+  </header>
+  <main class="w-full max-w-3xl py-12 flex flex-col items-center justify-center gap-8">
+    <div class="text-center space-y-4">
+      <h1 class="text-4xl font-bold">Your Tima's AI-Bot</h1>
+      <p class="text-lg text-[#6272a4]">
+        Unlock the power of AI with our intelligent assistant. Get personalized recommendations, automate tasks, and
+        boost your productivity.
+      </p>
+    </div>
+    <div class="w-full bg-[#44475a] rounded-xl overflow-hidden shadow-lg">
+      <div class="flex items-center justify-between bg-[#6272a4] px-6 py-4">
+        <div class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="w-5 h-5 text-[#f8f8f2]">
+            <circle cx="12" cy="10" r="8"></circle>
+            <circle cx="12" cy="10" r="3"></circle>
+            <path d="M7 22h10"></path>
+            <path d="M12 22v-4"></path>
+          </svg>
+          <span class="text-sm font-medium">Chat with AI</span>
+        </div>
+      </div>
+      <div id="chat-container" class="p-6 space-y-4 h-96 overflow-y-auto"></div>
+      <div class="p-6">
+        <form id="chat-form" class="flex gap-4">
+          <input type="checkbox" id="stream" class="self-center" />
+          <label for="stream" class="text-sm self-center">Stream?</label>
+          <input id="prompt" type="text" placeholder="Type your message..."
+            class="flex-grow p-2 rounded bg-[#282a36] text-[#f8f8f2]" required />
+          <button type="submit"
+            class="bg-[#bd93f9] text-[#282a36] px-4 py-2 rounded hover:bg-[#ff79c6] transition-colors">Send</button>
+        </form>
+      </div>
+    </div>
+    <!-- Feature cards section (unchanged) -->
+  </main>
+  <footer class="w-full max-w-3xl py-8 flex items-center justify-between">
+    <div class="flex items-center gap-2 text-[#6272a4]">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4">
+        <circle cx="12" cy="12" r="10"></circle>
+        <path d="M14.83 14.83a4 4 0 1 1 0-5.66"></path>
+      </svg>
+      <span class="text-sm">2023 Tima's AI-Bot. All rights reserved.</span>
+    </div>
+  </footer>
+  <div id="loading" class="hidden fixed inset-0 bg-[#282a36] bg-opacity-50 flex items-center justify-center">
+    <div class="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-[#bd93f9]"></div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+  <script src="index.js"></script>
+</body>
+
+</html>
